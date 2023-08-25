@@ -11,10 +11,10 @@
 	</parent>
 
 	<groupId>myABC</groupId>
-	<artifactId>supporting.shipping</artifactId>
+	<artifactId>common.masters.admin</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>supporting.shipping</name>
+	<name>common.masters.admin</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -65,6 +65,6 @@
 			</plugin>
 		</plugins>
 
-		<finalName>supporting.shipping</finalName>
+		<finalName>common.masters.admin</finalName>
 	</build>
 </project>
