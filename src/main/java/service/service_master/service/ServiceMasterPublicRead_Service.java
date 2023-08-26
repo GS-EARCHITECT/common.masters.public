@@ -29,7 +29,7 @@ public class ServiceMasterPublicRead_Service implements I_ServiceMasterPublicRea
 	{
 		CompletableFuture<CopyOnWriteArrayList<ServiceMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
 		{
-		CopyOnWriteArrayList<ServiceMaster> serviceList = (CopyOnWriteArrayList<ServiceMaster>) serviceMasterPublicReadRepo.findAll();		
+		CopyOnWriteArrayList<ServiceMaster> serviceList = (CopyOnWriteArrayList<ServiceMaster>) serviceMasterPublicReadRepo.getAllServices();		
 		CopyOnWriteArrayList<ServiceMaster_DTO> lMasterss = serviceList != null ? this.getServiceMaster_DTOs(serviceList) : null;
 		return lMasterss;
 		}, asyncExecutor);

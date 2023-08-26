@@ -28,7 +28,7 @@ public class PlaceMasterPublicRead_Service implements I_PlaceMasterPublicRead_Se
 	public CompletableFuture<CopyOnWriteArrayList<PlaceMaster_DTO>> getAllPlaces() 
 	{
 		CompletableFuture<CopyOnWriteArrayList<PlaceMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
-			CopyOnWriteArrayList<PlaceMaster> placeList = (CopyOnWriteArrayList<PlaceMaster>) placeMasterPublicReadRepo.findAll();
+			CopyOnWriteArrayList<PlaceMaster> placeList = (CopyOnWriteArrayList<PlaceMaster>) placeMasterPublicReadRepo.getAllPlaces();
 			CopyOnWriteArrayList<PlaceMaster_DTO> lMasters = placeList != null ? this.getPlaceMaster_DTOs(placeList) : null;
 			return lMasters;
 			}, asyncExecutor);

@@ -31,7 +31,7 @@ public class PartyContactPublicRead_Service implements I_PartyContactPublicRead_
 	{
 		CompletableFuture<CopyOnWriteArrayList<PartyContact_DTO>> future = CompletableFuture.supplyAsync(() -> {
 			CopyOnWriteArrayList<PartyContact> supplierList = (CopyOnWriteArrayList<PartyContact>) partyContactPublicReadRepo
-					.findAll();
+					.getAllPartyContacts();
 			CopyOnWriteArrayList<PartyContact_DTO> lPartyContacts = new CopyOnWriteArrayList<PartyContact_DTO>();
 			lPartyContacts = supplierList != null ? this.getPartyContact_DTOs(supplierList) : null;
 			return lPartyContacts;

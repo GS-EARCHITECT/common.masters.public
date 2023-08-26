@@ -13,6 +13,9 @@ import party.party_contacts.model.master.PartyContactPK;
 public interface PartyContactPublicRead_Repo extends JpaRepository<PartyContact, PartyContactPK> 
 {
 
+	@Query(value = "SELECT * FROM Party_Contacts a order by a.CUSTOMER_SEQ_NO", nativeQuery = true)
+	CopyOnWriteArrayList<PartyContact> getAllPartyContacts();
+	
 	@Query(value = "SELECT * FROM Party_Contacts a WHERE ((a.CUSTOMER_SEQ_NO in :ids) and (a.ON_DTTM BETWEEN :frDtTm  and :toDtTm)) order by a.CUSTOMER_SEQ_NO", nativeQuery = true)
 	CopyOnWriteArrayList<PartyContact> getSelectPartyContactsBetweenTimes(@Param("ids") CopyOnWriteArrayList<Long> ids, @Param("frDtTm") Timestamp frDtTm, @Param("toDtTm") Timestamp toDtTm);
 	

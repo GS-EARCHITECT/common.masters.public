@@ -6,14 +6,10 @@ import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import job.job_class_master.model.dto.JobClassMaster_DTO;
-import job.job_class_master.model.master.JobClassMaster;
 import job.job_master.model.dto.JobMaster_DTO;
 import job.job_master.model.master.JobMaster;
 import job.job_master.model.repo.JobMasterPublicRead_Repo;
@@ -36,7 +32,7 @@ public class JobMasterPublicRead_Service implements I_JobMasterPublicRead_Servic
 	{
 		CompletableFuture<CopyOnWriteArrayList<JobMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
 		{		
-		CopyOnWriteArrayList<JobMaster> jobList = (CopyOnWriteArrayList<JobMaster>) jobMasterPublicReadRepo.findAll();
+		CopyOnWriteArrayList<JobMaster> jobList = jobMasterPublicReadRepo.getAllJobMasters();
 		CopyOnWriteArrayList<JobMaster_DTO> jobDTOs = new CopyOnWriteArrayList<JobMaster_DTO>();
 		jobDTOs = jobList != null ? this.getJobMaster_DTOs(jobList) : null;
 		return jobDTOs;
@@ -85,24 +81,10 @@ public class JobMasterPublicRead_Service implements I_JobMasterPublicRead_Servic
 	{
 		JobMaster_DTO jobMasterDTO = new JobMaster_DTO();
 		jobMasterDTO = new JobMaster_DTO();		
-		jobMasterDTO.setJobSeqNo(jobMaster2.getJobSeqNo());
+		jobMasterDTO.setMasterJobSeqNo(jobMaster2.getMasterJobSeqNo());
 		jobMasterDTO.setDescription(jobMaster2.getDescription());
-		jobMasterDTO.setDiscPer(jobMaster2.getDiscPer());
-		jobMasterDTO.setDiscSeqNo(jobMaster2.getDiscSeqNo());
-		jobMasterDTO.setDiscVal(jobMaster2.getDiscVal());
-		jobMasterDTO.setDuration(jobMaster2.getDuration());
-		jobMasterDTO.setDurationCodeSeqNo(jobMaster2.getDurationCodeSeqNo());
-		jobMasterDTO.setJob(jobMaster2.getJob());
-		jobMasterDTO.setJobId(jobMaster2.getJobId());
-		jobMasterDTO.setPartySeqNo(jobMaster2.getPartySeqNo());
+		jobMasterDTO.setDescription(jobMaster2.getDescription());
 		jobMasterDTO.setSpecificationSeqNo(jobMaster2.getSpecificationSeqNo());
-		jobMasterDTO.setTaxPer(jobMaster2.getTaxPer());
-		jobMasterDTO.setTaxSeqNo(jobMaster2.getTaxSeqNo());
-		jobMasterDTO.setTaxVal(jobMaster2.getTaxVal());
-		jobMasterDTO.setUnitRate(jobMaster2.getUnitRate());
-		jobMasterDTO.setUnitRateSeqNo(jobMaster2.getUnitRateSeqNo());
-		jobMasterDTO.setRemark(jobMaster2.getRemark());
-		jobMasterDTO.setStatus(jobMaster2.getStatus());
 		return jobMasterDTO;
 	}
 	

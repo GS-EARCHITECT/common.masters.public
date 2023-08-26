@@ -28,7 +28,7 @@ public class ResourceClassMasterPublicRead_Service implements I_ResourceClassMas
 	public CompletableFuture<CopyOnWriteArrayList<ResourceClassMaster_DTO>> getAllResourceClasses()
 	{
 		CompletableFuture<CopyOnWriteArrayList<ResourceClassMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
-		CopyOnWriteArrayList<ResourceClassMaster> resourceList = (CopyOnWriteArrayList<ResourceClassMaster>) resourceClassMasterPublicReadRepo.findAll();
+		CopyOnWriteArrayList<ResourceClassMaster> resourceList = (CopyOnWriteArrayList<ResourceClassMaster>) resourceClassMasterPublicReadRepo.getAllResourceClasses();
 		CopyOnWriteArrayList<ResourceClassMaster_DTO> lMasters = new CopyOnWriteArrayList<ResourceClassMaster_DTO>();
 		lMasters = resourceList != null ? this.getResourceClassMaster_DTOs(resourceList) : null;
 		return lMasters;

@@ -12,7 +12,10 @@ public interface JobClassMasterPublicRead_Repo extends JpaRepository<JobClassMas
 {
 
 	@Query(value = "SELECT * from  JOB_CLASS_MASTER where JOB_CLASS_SEQ_NO in :ids ORDER BY JOB_CLASS_SEQ_NO", nativeQuery = true)
-	CopyOnWriteArrayList<JobClassMaster> getSelectJobClasses(@Param("jobClassMasterSeqNos") CopyOnWriteArrayList<Long> ids);
+	CopyOnWriteArrayList<JobClassMaster> getSelectJobClasses(@Param("ids") CopyOnWriteArrayList<Long> ids);
+
+	@Query(value = "SELECT * from  JOB_CLASS_MASTER ORDER BY JOB_CLASS_SEQ_NO", nativeQuery = true)
+	CopyOnWriteArrayList<JobClassMaster> getAllJobClasses();
 
 	
 }

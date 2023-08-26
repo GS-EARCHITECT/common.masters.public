@@ -30,7 +30,7 @@ public class PartyMasterPublicRead_Service implements I_PartyMasterPublicRead_Se
 	public CompletableFuture<CopyOnWriteArrayList<PartyMaster_DTO>> getAllParties() 
 	{
 		CompletableFuture<CopyOnWriteArrayList<PartyMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
-		CopyOnWriteArrayList<PartyMaster> partyList = (CopyOnWriteArrayList<PartyMaster>) partyPublicReadRepo.findAll();
+		CopyOnWriteArrayList<PartyMaster> partyList = (CopyOnWriteArrayList<PartyMaster>) partyPublicReadRepo.getAllParties();
 		CopyOnWriteArrayList<PartyMaster_DTO> cDTOs = new CopyOnWriteArrayList<PartyMaster_DTO>();
 		cDTOs = partyList != null ? this.getPartyMasterDtos(partyList) : null;
 		return cDTOs;
