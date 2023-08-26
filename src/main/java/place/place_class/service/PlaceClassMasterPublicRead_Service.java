@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import party.party_contacts.model.dto.PartyContact_DTO;
 import place.place_class.model.dto.PlaceClassMaster_DTO;
 import place.place_class.model.master.PlaceClassMaster;
 import place.place_class.model.repo.PlaceClassMasterPublicRead_Repo;
