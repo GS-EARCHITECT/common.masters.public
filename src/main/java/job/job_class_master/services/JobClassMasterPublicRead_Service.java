@@ -48,7 +48,7 @@ public class JobClassMasterPublicRead_Service implements I_JobClassMasterPublicR
 	{
     	CompletableFuture<CopyOnWriteArrayList<JobClassMaster_DTO>> future = CompletableFuture.supplyAsync(() -> 
 		{		
-		CopyOnWriteArrayList<JobClassMaster> jobList = (CopyOnWriteArrayList<JobClassMaster>) jobClassMasterPublicReadRepo.findAllById(ids);
+		CopyOnWriteArrayList<JobClassMaster> jobList = (CopyOnWriteArrayList<JobClassMaster>) jobClassMasterPublicReadRepo.getSelectJobClasses(ids);
 		CopyOnWriteArrayList<JobClassMaster_DTO> jobDTOs = new CopyOnWriteArrayList<JobClassMaster_DTO>();
 		jobDTOs = jobList != null ? this.getJobClassMaster_DTOs(jobList) : null;
 		return jobDTOs;

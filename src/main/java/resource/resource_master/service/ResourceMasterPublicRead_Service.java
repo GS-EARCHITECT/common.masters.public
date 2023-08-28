@@ -38,13 +38,23 @@ public class ResourceMasterPublicRead_Service implements I_ResourceMasterPublicR
 	public CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> getSelectMasterResources(CopyOnWriteArrayList<Long> ids)
 	{
 		CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
-			CopyOnWriteArrayList<ResourceMaster> resourceList = (CopyOnWriteArrayList<ResourceMaster>) resourceMasterPublicReadRepo.findAllById(ids);
+			CopyOnWriteArrayList<ResourceMaster> resourceList = (CopyOnWriteArrayList<ResourceMaster>) resourceMasterPublicReadRepo.getSelectResources(ids);
 			CopyOnWriteArrayList<ResourceMaster_DTO> lMasterss = resourceList != null ? this.getResourceMaster_DTOs(resourceList) : null;
 			return lMasterss;
 		}, asyncExecutor);
 		return future;
 	}
    
+	public CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> getSelectResourcesByOEMs(CopyOnWriteArrayList<Long> ids)
+	{
+		CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
+			CopyOnWriteArrayList<ResourceMaster> resourceList = (CopyOnWriteArrayList<ResourceMaster>) resourceMasterPublicReadRepo.getSelectResourcesByOEMs(ids);
+			CopyOnWriteArrayList<ResourceMaster_DTO> lMasterss = resourceList != null ? this.getResourceMaster_DTOs(resourceList) : null;
+			return lMasterss;
+		}, asyncExecutor);
+		return future;
+	}
+	
 	private synchronized CopyOnWriteArrayList<ResourceMaster_DTO> getResourceMaster_DTOs(CopyOnWriteArrayList<ResourceMaster> lMasters) 
 	{
 		ResourceMaster_DTO lDTO = null;

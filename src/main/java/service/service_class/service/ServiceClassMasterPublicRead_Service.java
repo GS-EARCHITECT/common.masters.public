@@ -41,7 +41,7 @@ public class ServiceClassMasterPublicRead_Service implements I_ServiceClassMaste
 
 		CompletableFuture<CopyOnWriteArrayList<ServiceClassMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
 			CopyOnWriteArrayList<ServiceClassMaster> serviceList = (CopyOnWriteArrayList<ServiceClassMaster>) serviceClassMasterPublicReadRepo
-					.findAllById(ids);
+					.getSelectResourceClasses(ids);
 			CopyOnWriteArrayList<ServiceClassMaster_DTO> lMasters = serviceList != null
 					? this.getServiceClassMaster_DTOs(serviceList)
 					: null;

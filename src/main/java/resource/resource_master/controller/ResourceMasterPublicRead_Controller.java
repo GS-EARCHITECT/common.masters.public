@@ -42,4 +42,12 @@ public class ResourceMasterPublicRead_Controller {
 		return new ResponseEntity<>(resourceDTOs, HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/getSelectMasterResourcesByOEMs", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<CopyOnWriteArrayList<ResourceMaster_DTO>> getSelectMasterResourcesByOEMs(
+			@RequestBody CopyOnWriteArrayList<Long> oemSeqNos) {
+		CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> completableFuture = resourceMasterPublicReadServ.getSelectResourcesByOEMs(oemSeqNos);
+		CopyOnWriteArrayList<ResourceMaster_DTO> resourceDTOs = completableFuture.join();
+		return new ResponseEntity<>(resourceDTOs, HttpStatus.OK);
+	}
+	
 }

@@ -7,5 +7,6 @@ import resource.resource_master.model.dto.ResourceMaster_DTO;
 public interface I_ResourceMasterPublicRead_Service
 {
     abstract public CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> getAllMasterResources();    
-    abstract public CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> getSelectMasterResources(CopyOnWriteArrayList<Long> ids);    
+    abstract public CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> getSelectMasterResources(CopyOnWriteArrayList<Long> ids);
+    abstract public CompletableFuture<CopyOnWriteArrayList<ResourceMaster_DTO>> getSelectResourcesByOEMs(CopyOnWriteArrayList<Long> ids);
 }

@@ -41,9 +41,8 @@ public class PartyMasterPublicRead_Service implements I_PartyMasterPublicRead_Se
 	public CompletableFuture<CopyOnWriteArrayList<PartyMaster_DTO>> getSelectParties(CopyOnWriteArrayList<Long> partySeqNos) 
 	{
 		CompletableFuture<CopyOnWriteArrayList<PartyMaster_DTO>> future = CompletableFuture.supplyAsync(() -> {
-		CopyOnWriteArrayList<PartyMaster_DTO> cDTOs = new CopyOnWriteArrayList<PartyMaster_DTO>();
-		CopyOnWriteArrayList<PartyMaster> partyMasters = (CopyOnWriteArrayList<PartyMaster>) partyPublicReadRepo.findAllById(partySeqNos);
-		cDTOs = partyMasters != null ? this.getPartyMasterDtos(partyMasters) : null;
+		CopyOnWriteArrayList<PartyMaster> partyMasters = (CopyOnWriteArrayList<PartyMaster>) partyPublicReadRepo.getSelectParties(partySeqNos);
+		CopyOnWriteArrayList<PartyMaster_DTO> cDTOs = partyMasters != null ? this.getPartyMasterDtos(partyMasters) : null;
 		return cDTOs;
 		}, asyncExecutor);
 		return future;

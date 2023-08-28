@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class ResourceMaster_DTO implements Serializable 
 {
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1907797078515290941L;
+	private static final long serialVersionUID = 6597045184762199325L;
 	private Long masterResourceSeqNo;
 	private String description;
 	private String resourceName;
 	private Long specificationSeqNo;
+	private Long oemSeqNo;
 
 	public Long getMasterResourceSeqNo() {
 		return masterResourceSeqNo;
@@ -46,13 +46,22 @@ public class ResourceMaster_DTO implements Serializable
 		this.specificationSeqNo = specificationSeqNo;
 	}
 
+	public Long getOemSeqNo() {
+		return oemSeqNo;
+	}
+
+	public void setOemSeqNo(Long oemSeqNo) {
+		this.oemSeqNo = oemSeqNo;
+	}
+
 	public ResourceMaster_DTO(Long masterResourceSeqNo, String description, String resourceName,
-			Long specificationSeqNo) {
+			Long specificationSeqNo, Long oemSeqNo) {
 		super();
 		this.masterResourceSeqNo = masterResourceSeqNo;
 		this.description = description;
 		this.resourceName = resourceName;
 		this.specificationSeqNo = specificationSeqNo;
+		this.oemSeqNo = oemSeqNo;
 	}
 
 	public ResourceMaster_DTO() {

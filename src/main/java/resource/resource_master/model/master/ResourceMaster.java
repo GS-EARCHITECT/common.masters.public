@@ -30,6 +30,9 @@ public class ResourceMaster implements Serializable {
 	@Column(name = "SPECIFICATION_SEQ_NO")
 	private Long specificationSeqNo;
 
+	@Column(name = "OEM_SEQ_NO")
+	private Long oemSeqNo;
+
 	public ResourceMaster() {
 	}
 
@@ -65,12 +68,53 @@ public class ResourceMaster implements Serializable {
 		this.resourceName = resourceName;
 	}
 
-	public ResourceMaster(Long masterResourceSeqNo, String description, String resourceName, Long specificationSeqNo) {
+	public Long getOemSeqNo() {
+		return oemSeqNo;
+	}
+
+	public void setOemSeqNo(Long oemSeqNo) {
+		this.oemSeqNo = oemSeqNo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((masterResourceSeqNo == null) ? 0 : masterResourceSeqNo.hashCode());
+		result = prime * result + ((oemSeqNo == null) ? 0 : oemSeqNo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResourceMaster other = (ResourceMaster) obj;
+		if (masterResourceSeqNo == null) {
+			if (other.masterResourceSeqNo != null)
+				return false;
+		} else if (!masterResourceSeqNo.equals(other.masterResourceSeqNo))
+			return false;
+		if (oemSeqNo == null) {
+			if (other.oemSeqNo != null)
+				return false;
+		} else if (!oemSeqNo.equals(other.oemSeqNo))
+			return false;
+		return true;
+	}
+
+	public ResourceMaster(Long masterResourceSeqNo, String description, String resourceName, Long specificationSeqNo,
+			Long oemSeqNo) {
 		super();
 		this.masterResourceSeqNo = masterResourceSeqNo;
 		this.description = description;
 		this.resourceName = resourceName;
 		this.specificationSeqNo = specificationSeqNo;
+		this.oemSeqNo = oemSeqNo;
 	}
 
 }
